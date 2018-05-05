@@ -12,7 +12,7 @@ $(document).ready(function () {
         showBtn.html(topics[i]);
         showBtn.attr("class","clickMe");
         showBtn.attr("data-name", topics[i]);
-        $("#showBtn").prepend(showBtn);
+        $("#showBtn").append(showBtn);
     }
 
 //*************Create new button when submit button is clicked ***********/
