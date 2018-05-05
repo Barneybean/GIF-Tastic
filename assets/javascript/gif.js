@@ -4,7 +4,8 @@ $(document).ready(function () {
     var userInput;
     var scope;
 //*************print out main page *********/
-    getGif('trending');
+    // getGif('trending');
+    
 //************* display predefined buttons ******/
     var topics = ["cat","dog","pig","happy","cheer","rooster","fish","cute","thumbup","ironman","awkward","cold","hot","trending"];
     for ( var i=0; i<topics.length; i++) {
@@ -12,7 +13,7 @@ $(document).ready(function () {
         showBtn.html(topics[i]);
         showBtn.attr("class","clickMe");
         showBtn.attr("data-name", topics[i]);
-        $("#showBtn").append(showBtn);
+        $("#showBtn").prepend(showBtn);
     }
 
 //*************Create new button when submit button is clicked ***********/
@@ -35,15 +36,16 @@ $(document).ready(function () {
     $(document).on("click", ".clickMe",function (event) {
         event.preventDefault();
         var dataName = $(this).attr("data-name");
-        getGif(dataName);
-        //pass this button to click function in getGif();
+        //pass this button to click function in getGif
         scope=this;
+        getGif(dataName);
+        console.log(scope);
     })
-
+    
 //********AJAX and print out searched gifs *************/
     function getGif(element) {
         $("#showGif").empty();
-       
+        
         var giphyUrl = "http://api.giphy.com/v1/gifs/search?q="+element+"&api_key=o2KZbrj7FUzmnGfL1Yx5daKlI0quThpg&limit=20"
         $("#header").empty();
 
@@ -77,16 +79,17 @@ $(document).ready(function () {
                 ratingDiv.html("Rating: "+response[a].rating); 
                 combineDiv.prepend(ratingDiv);
             }
-
-            $(".gifImage").on("click", function() {
-                var state = $(scope).attr("data-state");
+            $(document).on("click", ".gifImage", function() {
+                var state = $(this).attr("data-state");
+                console.log(this);
+                console.log();
                 if (state == "still") {
-                    $(scope).attr("src", $(scope).attr("data-animate"));
-                    $(scope).attr("data-state", "animate");
+                    $(this).attr("src", $(this).attr("data-animate"));
+                    $(this).attr("data-state", "animate");
                 }
                 else {
-                    $(scope).attr("src", $(scope).attr("data-still"));
-                    $(scope).attr("data-state", "still");
+                    $(this).attr("src", $(this).attr("data-still"));
+                    $(this).attr("data-state", "still");
                 }
             });
         

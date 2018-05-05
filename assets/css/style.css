@@ -21,6 +21,14 @@ body {
     background-color: burlywood;    
 }
 
+#leftCol{
+    display:inline-block;
+}
+
+#rightCol{
+    display:inline-block;
+}
+
 #header{
     color: rgb(61, 59, 59);
 }
