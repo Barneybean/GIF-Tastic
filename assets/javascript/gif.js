@@ -7,13 +7,13 @@ $(document).ready(function () {
 
 //************* display topic buttons ******/
     
-for ( var i=0; i<topics.length; i++) {
-    var showBtn = $("<button>");
-    showBtn.html(topics[i]);
-    showBtn.attr("class","clickMe");
-    showBtn.attr("data-name", topics[i]);
-    $("#showBtn").prepend(showBtn);
-}    
+    for ( var i=0; i<topics.length; i++) {
+        var showBtn = $("<button>");
+        showBtn.html(topics[i]);
+        showBtn.attr("class","clickMe");
+        showBtn.attr("data-name", topics[i]);
+        $("#showBtn").prepend(showBtn);
+    }    
 //*********switch between still image and animate image *****/
     $(document).on("click", ".gifImage", function() {
         var state = $(this).attr("data-state");
