@@ -8,8 +8,13 @@ body {
 }
 
 .clickMe{
-    background-color:lightblue;
-    border: 2px solid grey;
+    background-color: rgb(224, 233, 224);
+    border: hidden;
+    margin: 3px;
+}
+
+.clickMe:hover{
+    border-style: groove;
 }
 
 .clickMe:focus {     
@@ -19,6 +24,20 @@ body {
 #header{
     color: rgb(61, 59, 59);
 }
+
+.combineDiv{
+    display: inline;
+    margin: 8px 8px;
+    border-style: ridge;
+}
+
+.ratingDiv{
+    padding-left: 3px;
+}
+
+/* p{
+    float:left;
+} */
 /* .left{
     border: 3px solid white;
 } */
