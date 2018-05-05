@@ -1,20 +1,33 @@
 $(document).ready(function () {
 
-
-    var userInput;
-    var scope;
-//*************print out main page *********/
-    // getGif('trending');
-    
-//************* display predefined buttons ******/
     var topics = ["cat","dog","pig","happy","cheer","rooster","fish","cute","thumbup","ironman","awkward","cold","hot","trending"];
-    for ( var i=0; i<topics.length; i++) {
-        var showBtn = $("<button>");
-        showBtn.html(topics[i]);
-        showBtn.attr("class","clickMe");
-        showBtn.attr("data-name", topics[i]);
-        $("#showBtn").prepend(showBtn);
-    }
+    var userInput;
+//*************print out main page *********/
+    getGif('trending');
+
+//************* display topic buttons ******/
+    
+for ( var i=0; i<topics.length; i++) {
+    var showBtn = $("<button>");
+    showBtn.html(topics[i]);
+    showBtn.attr("class","clickMe");
+    showBtn.attr("data-name", topics[i]);
+    $("#showBtn").prepend(showBtn);
+}    
+//*********switch between still image and animate image *****/
+    $(document).on("click", ".gifImage", function() {
+        var state = $(this).attr("data-state");
+        console.log(this);
+        console.log();
+        if (state == "still") {
+            $(this).attr("src", $(this).attr("data-animate"));
+            $(this).attr("data-state", "animate");
+        }
+        else {
+            $(this).attr("src", $(this).attr("data-still"));
+            $(this).attr("data-state", "still");
+        }
+    });
 
 //*************Create new button when submit button is clicked ***********/
     $("#submitBtn").on("click", function () {
@@ -22,14 +35,15 @@ $(document).ready(function () {
         userInput = $("#input").val();
 
     //*****Method 1 to add button*****/
-        // var gifBtn = $("<button>");
-        // gifBtn.html(userInput);
-        // gifBtn.attr("class", "clickMe");
-        // gifBtn.attr("data-name",userInput);
-        // $("#showBtn").prepend(gifBtn);
+        var gifBtn = $("<button>");
+        gifBtn.html(userInput);
+        gifBtn.attr("class", "clickMe");
+        gifBtn.attr("data-name",userInput);
+        $("#showBtn").prepend(gifBtn);
 
-        //*****Method 2 */
-        topics.push(userInput);
+        // //*****Method 2 */
+        // topics.push(userInput);
+        // console.log(topics);
     });
 
 //*************grab API when topic button is clicked **************/
@@ -37,9 +51,7 @@ $(document).ready(function () {
         event.preventDefault();
         var dataName = $(this).attr("data-name");
         //pass this button to click function in getGif
-        scope=this;
         getGif(dataName);
-        console.log(scope);
     })
     
 //********AJAX and print out searched gifs *************/
@@ -79,19 +91,7 @@ $(document).ready(function () {
                 ratingDiv.html("Rating: "+response[a].rating); 
                 combineDiv.prepend(ratingDiv);
             }
-            $(document).on("click", ".gifImage", function() {
-                var state = $(this).attr("data-state");
-                console.log(this);
-                console.log();
-                if (state == "still") {
-                    $(this).attr("src", $(this).attr("data-animate"));
-                    $(this).attr("data-state", "animate");
-                }
-                else {
-                    $(this).attr("src", $(this).attr("data-still"));
-                    $(this).attr("data-state", "still");
-                }
-            });
+           
         
 
             //try to create page

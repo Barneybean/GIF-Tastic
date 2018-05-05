@@ -3,6 +3,10 @@ body {
     background: url(../images/background.jpg);
 };
 
+/* #navbarNav{
+    background: orange;
+} */
+
 #submitBtn{
     margin-bottom: 10px;
 }
