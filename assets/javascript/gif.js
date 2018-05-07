@@ -58,19 +58,20 @@ $(document).ready(function () {
 //*************grab API when topic button is clicked **************/
     $(document).on("click", ".clickMe",function (event) {
         event.preventDefault();
+        gitLimit=10;
         dataName = $(this).attr("data-name");
+        console.log(gifLimit);
         //pass this button to click function in getGif
         getGif(dataName);
+        console.log(gifLimit);
         isBtnClicked=true;
-        gifLimit=10;
+        
     })
 
 // *************Allow user request 10 more gif*******/
     $(document).on("click", "#moreGif", function() {
         gifLimit += 10;
-        console.log(gifLimit);
-        console.log(dataName);
-        console.log(isBtnClicked);
+        // console.log(gifLimit);
         if(isBtnClicked) {
             getGif(dataName);
         }
@@ -111,14 +112,15 @@ $(document).ready(function () {
                 gifDiv.attr("class", "gifImage");
                 gifDiv.attr("data-state", "still");
                 combineDiv.append(gifDiv)
-                $("#showGif").append(combineDiv);
-                //add rating 
+                $("#showGif").prepend(combineDiv);
+                //add rating and title
                 var ratingDiv = $("<div class='ratingDiv'>");
-                ratingDiv.html("Rating: "+response[a].rating); 
+                var titleDiv = $("<div class='ratingDiv'>");
+                ratingDiv.append("Title: "+response[a].title+"<br>"); 
+                ratingDiv.append("Rating: "+response[a].rating); 
                 combineDiv.prepend(ratingDiv);
             }
            
-        
 
             //try to create page
             // for (var j=0; j<5; j++) {
