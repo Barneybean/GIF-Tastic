@@ -58,7 +58,7 @@ $(document).ready(function () {
 //*************grab API when topic button is clicked **************/
     $(document).on("click", ".clickMe",function (event) {
         event.preventDefault();
-        gitLimit=10;
+        gifLimit=10;
         dataName = $(this).attr("data-name");
         console.log(gifLimit);
         //pass this button to click function in getGif
