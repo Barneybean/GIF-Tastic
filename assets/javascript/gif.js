@@ -65,7 +65,7 @@ $(document).ready(function () {
         gifLimit=10;
     })
 
-    // *************Allow user request 10 more gif*******/
+// *************Allow user request 10 more gif*******/
     $(document).on("click", "#moreGif", function() {
         gifLimit += 10;
         console.log(gifLimit);
