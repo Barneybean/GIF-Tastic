@@ -7,9 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   </head>
   <body>
+      <button id="topBtn" title="Go to top">Top</button>
       <nav id="navbarNav" class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Life in Bay Area Can B Fun</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,8 +36,8 @@
           <div id="rightCol" class="col-sm-2">
             <hr>
             <div class="row justify-content-center">
-              <input id="input" type="text" placeholder="Search new gif">
-              <input id="submitBtn" type="submit">
+              <input id="input" class="border border-success rounded mb-1" type="text" placeholder="Search new gif">
+              <input id="submitBtn" type="submit" class="btn btn-success btn-sm rounded">
             </div>
             <hr>
             <div id="showBtn" class="row"> 
@@ -45,6 +46,7 @@
           <div id="rightCol" class="col-sm-9">
             <div class="row">
               <h3 id="header"></h3>
+              <input id="moreGif" type="submit" class="btn btn-sm btn-outline-info rounded" value="Add Gif" style="margin-left:5px;">
             </div>
             <div id="showGif" class="row">
             </div>

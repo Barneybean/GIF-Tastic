@@ -2,23 +2,32 @@ $(document).ready(function () {
 
     var topics = ["cat","dog","pig","happy","cheer","rooster","fish","cute","thumbup","ironman","awkward","cold","hot","trending"];
     var userInput;
+    var dataName;
+    var isBtnClicked;
+    var gifLimit;
 //*************print out main page *********/
-    getGif('trending');
+    function homePage() {
+        gifLimit = 10;
+        getGif('trending');
+        isBtnClicked=false;
+    }
+    
+    homePage();
 
 //************* display topic buttons ******/
     
-for ( var i=0; i<topics.length; i++) {
-    var showBtn = $("<button>");
-    showBtn.html(topics[i]);
-    showBtn.attr("class","clickMe");
-    showBtn.attr("data-name", topics[i]);
-    $("#showBtn").prepend(showBtn);
+    for ( var i=0; i<topics.length; i++) {
+        var showBtn = $("<button>");
+        showBtn.html(topics[i]);
+        showBtn.attr("class","clickMe");
+        showBtn.attr("data-name", topics[i]);
+        $("#showBtn").prepend(showBtn);
 }    
 //*********switch between still image and animate image *****/
     $(document).on("click", ".gifImage", function() {
         var state = $(this).attr("data-state");
         console.log(this);
-        console.log();
+        
         if (state == "still") {
             $(this).attr("src", $(this).attr("data-animate"));
             $(this).attr("data-state", "animate");
@@ -40,7 +49,7 @@ for ( var i=0; i<topics.length; i++) {
         gifBtn.attr("class", "clickMe");
         gifBtn.attr("data-name",userInput);
         $("#showBtn").prepend(gifBtn);
-
+        userInput = $("#input").val("");
         // //*****Method 2 */
         // topics.push(userInput);
         // console.log(topics);
@@ -49,16 +58,33 @@ for ( var i=0; i<topics.length; i++) {
 //*************grab API when topic button is clicked **************/
     $(document).on("click", ".clickMe",function (event) {
         event.preventDefault();
-        var dataName = $(this).attr("data-name");
+        dataName = $(this).attr("data-name");
         //pass this button to click function in getGif
         getGif(dataName);
+        isBtnClicked=true;
+        gifLimit=10;
     })
+
+    // *************Allow user request 10 more gif*******/
+    $(document).on("click", "#moreGif", function() {
+        gifLimit += 10;
+        console.log(gifLimit);
+        console.log(dataName);
+        console.log(isBtnClicked);
+        if(isBtnClicked) {
+            getGif(dataName);
+        }
+        else {
+            getGif("trending");
+        }
+    });
+    
     
 //********AJAX and print out searched gifs *************/
     function getGif(element) {
         $("#showGif").empty();
-        
-        var giphyUrl = "http://api.giphy.com/v1/gifs/search?q="+element+"&api_key=o2KZbrj7FUzmnGfL1Yx5daKlI0quThpg&limit=20"
+        console.log(gifLimit);
+        var giphyUrl = "http://api.giphy.com/v1/gifs/search?q="+element+"&api_key=o2KZbrj7FUzmnGfL1Yx5daKlI0quThpg&limit="+gifLimit
         $("#header").empty();
 
         $.ajax({
@@ -118,7 +144,22 @@ for ( var i=0; i<topics.length; i++) {
         });
     }; 
 
+    // When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
 
+function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById("topBtn").style.display = "block";
+    } else {
+        document.getElementById("topBtn").style.display = "none";
+    }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+document.getElementById("topBtn").addEventListener("click",function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+});
     
 
 })
