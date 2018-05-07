@@ -85,7 +85,7 @@ $(document).ready(function () {
     function getGif(element) {
         $("#showGif").empty();
         console.log(gifLimit);
-        var giphyUrl = "https://api.giphy.com/v1/gifs/search?q="+element+"&api_key=o2KZbrj7FUzmnGfL1Yx5daKlI0quThpg&limit="+gifLimit
+        var giphyUrl = "http://api.giphy.com/v1/gifs/search?q="+element+"&api_key=o2KZbrj7FUzmnGfL1Yx5daKlI0quThpg&limit="+gifLimit
         $("#header").empty();
 
         $.ajax({
