@@ -115,8 +115,8 @@ $(document).ready(function () {
                 $("#showGif").prepend(combineDiv);
                 //add rating and title
                 var ratingDiv = $("<div class='ratingDiv'>");
-                var titleDiv = $("<div class='ratingDiv'>");
-                ratingDiv.append("Title: "+response[a].title+"<br>"); 
+                // var titleDiv = $("<div class='ratingDiv' id='title'>");
+                // ratingDiv.append("Title: "+response[a].title+"<br>"); 
                 ratingDiv.append("Rating: "+response[a].rating); 
                 combineDiv.prepend(ratingDiv);
             }
