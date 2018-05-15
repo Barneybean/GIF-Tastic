@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    var topics = ["cat","dog","pig","happy","cheer","rooster","fish","cute","thumbup","ironman","awkward","cold","hot","trending"];
+    var topics = ["cat","dog","bowing","happy","cheer","rooster","fish","cute","thumbup","ironman","welcome","cold","hot","trending"];
     var userInput;
     var dataName;
     var isBtnClicked;
