@@ -1,7 +1,9 @@
 # GIF-Tastic
 
-Main contributor: William Gao 
+##Developer: William Gao 
 Email: seewilliam.gao@gmail.com
+
+Deployed Site: https://barneybean.github.io/GIF-Tastic/
 
 Introduction: 
     1. This project is a webpage that display gifs in asorted topics using API from giphy.com. 
